@@ -1,0 +1,100 @@
+# ==============================================================================
+# Sentinel-2 NDVI Analysis Configuration - EXAMPLE
+# ==============================================================================
+# 1. Copy this file to 'config.yaml'
+# 2. Edit the values according to your project needs
+
+# ------------------------------------------------------------------------------
+# STUDY AREA
+# ------------------------------------------------------------------------------
+# GeoJSON format study area (WGS84 - EPSG:4326)
+# Coordinates: [longitude, latitude] format
+# Use https://geojson.io to draw your polygon
+aoi:
+  type: "Polygon"
+  coordinates:
+    - - [38.60, 37.36]  # Southwest
+      - [38.66, 37.36]  # Southeast  
+      - [38.66, 37.41]  # Northeast
+      - [38.60, 37.41]  # Northwest
+      - [38.60, 37.36]  # Close polygon
+
+# Project name (used in plot titles and filenames)
+project_name: "My Study Area"
+
+# ------------------------------------------------------------------------------
+# DATE RANGE
+# ------------------------------------------------------------------------------
+# Format: YYYY-MM-DD/YYYY-MM-DD
+search_date_range: "2023-01-01/2023-12-31"
+
+# ------------------------------------------------------------------------------
+# DATA DIRECTORIES
+# ------------------------------------------------------------------------------
+# Use relative paths (recommended) or absolute paths
+
+# Directory for downloaded raw Sentinel-2 data
+raw_dir: "./data/raw"
+
+# Directory for processed NDVI rasters
+processed_dir: "./data/processed"
+
+# Directory for output reports and plots
+output_dir: "./data/output"
+
+# Study area boundary file (GeoJSON or Shapefile)
+# Optional - if not specified, entire image will be analyzed
+# Set to null or remove if not using
+polygon_path: "./data/study_area.geojson"
+
+# ------------------------------------------------------------------------------
+# SENTINEL-2 SEARCH PARAMETERS
+# ------------------------------------------------------------------------------
+# Bands to download (Red and NIR for NDVI)
+target_bands:
+  - "B04_10m"  # Red band (665nm)
+  - "B08_10m"  # NIR band (842nm)
+
+# Maximum cloud cover percentage (0-100)
+cloud_threshold: 10.0
+
+# Minimum days between scenes to avoid redundant data
+min_days_interval: 14
+
+# Maximum number of scenes to search
+max_items: 100
+
+# ------------------------------------------------------------------------------
+# PROCESSING PARAMETERS
+# ------------------------------------------------------------------------------
+# Block size for windowed reading (pixels) - adjust based on available RAM
+block_size: 512
+
+# NDVI nodata value
+nodata_value: -9999.0
+
+# ------------------------------------------------------------------------------
+# VISUALIZATION SETTINGS
+# ------------------------------------------------------------------------------
+# Figure DPI (resolution)
+figure_dpi: 150
+
+# Font size for plots
+font_size: 11
+
+# NDVI color scale range
+ndvi_vmin: -0.1
+ndvi_vmax: 0.8
+
+# Show grid on plots
+show_grid: true
+grid_alpha: 0.3
+
+# ------------------------------------------------------------------------------
+# OUTPUT FILES
+# ------------------------------------------------------------------------------
+# Statistics CSV filename
+statistics_csv: "ndvi_statistics.csv"
+
+# Plot filename prefix
+plot_prefix: "ndvi_"

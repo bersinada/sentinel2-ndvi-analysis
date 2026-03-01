@@ -1,0 +1,110 @@
+# Sentinel-2 NDVI Analysis - Git Ignore File
+
+# ==============================================================================
+# Configuration & Secrets
+# ==============================================================================
+# Actual configuration (use config.example.yaml as template)
+config.yaml
+
+# Environment variables with credentials
+.env
+
+# ==============================================================================
+# Data Directories
+# ==============================================================================
+# Downloaded raw Sentinel-2 data (can be very large)
+data/raw/
+
+# Processed NDVI rasters and composites
+data/processed/
+
+# Output reports and plots
+data/output/
+
+# Keep data/ root so users can place study_area.geojson there
+# data/   <-- intentionally NOT ignored
+
+# ==============================================================================
+# Python
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# ==============================================================================
+# Jupyter Notebook
+# ==============================================================================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ==============================================================================
+# IDE / Editor
+# ==============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# ==============================================================================
+# OS Generated Files
+# ==============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ==============================================================================
+# Temporary Files
+# ==============================================================================
+*.tmp
+*.temp
+*.log
+*.bak
+
+# ==============================================================================
+# Large Data Files
+# ==============================================================================
+*.tif
+*.tiff
+*.jp2
+# VRT files are small (metadata only) - keep them out of git anyway
+*.vrt
+
+# Geospatial vector files (if in data/ subdirs; root-level ones are kept)
+data/**/*.geojson
+data/**/*.shp
+data/**/*.shx
+data/**/*.dbf
+data/**/*.prj
+data/**/*.cpg
+
+# Exception: keep example/sample files if needed
+!sample_data/
+
+# ==============================================================================
+# Temporary project files
+# ==============================================================================
+CODE_REVIEW.md
+FIXES_APPLIED.md
+PROJECT_READY.txt
