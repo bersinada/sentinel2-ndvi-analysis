@@ -22,11 +22,14 @@ pystac-client>=0.7.0
 python-dotenv>=1.0.0
 pyyaml>=6.0
 
-# Note: GDAL (for build_vrt.py)
-# Note: GDAL should be installed system-wide or via conda
+# Web UI
+streamlit>=1.30.0
+
+# Note: GDAL (for build_vrt.py / VRT generation)
+# GDAL should be installed system-wide or via conda
 # conda install -c conda-forge gdal
 # If using pip, try: pip install gdal (may require system GDAL)
 
-# Jupyter (for running notebooks)
+# Jupyter (for running notebooks — optional if using web UI)
 jupyter>=1.0.0
 ipykernel>=6.0.0
